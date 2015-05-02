@@ -1,3 +1,4 @@
+import java.util.List;
 
 public class TicTacToe {
     private Board board;
@@ -18,9 +19,17 @@ public class TicTacToe {
     }
 
     private void turn(Player player) {
-        int move = player.getMove("Please enter a number between 1 and 9:");
+        int move = getValidPlayerMove(player);
         board.updateBoardValue(move, player.getSymbol());
         board.display();
+    }
+
+    private Integer getValidPlayerMove(Player player){
+        int move = player.getMove("Please enter a number between 1 and 9:");
+        while ( move < 1 || move > 9 || !board.isEmptyLocation(move) ) {
+            move = player.getMove("Please enter a number between 1 and 9:");
+        }
+        return move;
     }
 
 }

@@ -4,6 +4,11 @@ import java.util.List;
 
 public class Board {
     private PrintStream printStream;
+
+    public List<String> getBoardValues() {
+        return boardValues;
+    }
+
     private List<String> boardValues = new ArrayList<>();
 
     public Board(PrintStream printStream) {
@@ -26,6 +31,10 @@ public class Board {
     }
 
     public void updateBoardValue(int location, String symbol) {
-        boardValues.add(location, symbol);
+        boardValues.set(location, symbol);
+    }
+
+    public boolean isEmptyLocation(int move) {
+        return boardValues.get(move).equals("  ");
     }
 }
