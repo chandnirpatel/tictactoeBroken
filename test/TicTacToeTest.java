@@ -2,20 +2,20 @@ import org.junit.Before;
 import org.junit.Test;
 
 import static org.mockito.Matchers.anyString;
-import static org.mockito.Mockito.atLeast;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.*;
 
 public class TicTacToeTest {
     private Board board;
     TicTacToe ticTacToe;
-    Player player;
+    Player player1;
+    private Player player2;
 
     @Before
     public void setUp() throws Exception {
         board = mock(Board.class);
-        player = mock(Player.class);
-        ticTacToe = new TicTacToe(board, player);
+        player1 = mock(Player.class);
+        player2 = mock(Player.class);
+        ticTacToe = new TicTacToe(board, player1, player2);
     }
 
     @Test
@@ -27,11 +27,20 @@ public class TicTacToeTest {
     }
 
     @Test
-    public void shouldAskPlayerForMove() {
-        String prompt = "Enter a number between 1 and 9:";
+    public void shouldAskPlayer1ForMove() {
 
         ticTacToe.start();
 
-        verify(player).getMove(anyString());
+        verify(player1, atLeastOnce()).getMove(anyString());
+    }
+
+
+    @Test
+    public void shouldAskPlayer2ForMoveWhenPlaying() {
+        when(player2.getMove(anyString())).thenReturn(1).thenReturn(2);
+
+        ticTacToe.start();
+
+        verify(player2, atLeastOnce()).getMove(anyString());
     }
 }

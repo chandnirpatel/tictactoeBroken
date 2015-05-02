@@ -1,24 +1,26 @@
 
 public class TicTacToe {
-
-
     private Board board;
-    private Player player;
+    private Player player1;
+    private Player player2;
 
-    public TicTacToe(Board board, Player player) {
+    public TicTacToe(Board board, Player player1, Player player2) {
 
         this.board = board;
-        this.player = player;
+        this.player1 = player1;
+        this.player2 = player2;
     }
 
     public void start() {
         board.display();
-        board.updateBoardValue(requestPlayersMove("Please enter a number between 1 and 9:"), "X ");
+        turn(player1);
+        turn(player2);
+    }
+
+    private void turn(Player player) {
+        int move = player.getMove("Please enter a number between 1 and 9:");
+        board.updateBoardValue(move, player.getSymbol());
         board.display();
     }
 
-    private Integer requestPlayersMove(String s) {
-        Integer move = player.getMove(s);
-        return move;
-    }
 }

@@ -5,18 +5,22 @@ import java.io.PrintStream;
 public class Player {
     private final PrintStream printStream;
     private final BufferedReader bufferedReader;
+    private final String symbol;
 
-
-    public Player(PrintStream printStream, BufferedReader bufferedReader) {
-
+    public Player(PrintStream printStream, BufferedReader bufferedReader, String symbol) {
         this.printStream = printStream;
         this.bufferedReader = bufferedReader;
+        this.symbol = symbol;
     }
 
     public Integer getMove(String prompt) {
         printStream.println(prompt);
         Integer move = readUserInput();
         return move;
+    }
+
+    public String getSymbol() {
+        return symbol;
     }
 
     private Integer readUserInput() {
@@ -30,4 +34,5 @@ public class Player {
         }
         return move;
     }
+
 }

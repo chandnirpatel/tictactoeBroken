@@ -13,7 +13,7 @@ public class PlayerTest {
     public void shouldGiveMoveLocationWhenPrompted() throws IOException {
         PrintStream printStream = new PrintStream(System.out);
         BufferedReader bufferedReader = mock(BufferedReader.class);
-        Player player = new Player(printStream, bufferedReader);
+        Player player = new Player(printStream, bufferedReader, "X ");
 
         player.getMove("");
 
