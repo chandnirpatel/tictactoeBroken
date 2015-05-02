@@ -1,6 +1,7 @@
 import org.junit.Before;
 import org.junit.Test;
 
+import static org.mockito.Matchers.anyString;
 import static org.mockito.Mockito.atLeast;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
@@ -29,8 +30,8 @@ public class TicTacToeTest {
     public void shouldAskPlayerForMove() {
         String prompt = "Enter a number between 1 and 9:";
 
-        ticTacToe.requestPlayersMove(prompt);
+        ticTacToe.start();
 
-        verify(player).getMove(prompt);
+        verify(player).getMove(anyString());
     }
 }

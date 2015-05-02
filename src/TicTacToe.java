@@ -17,7 +17,7 @@ public class TicTacToe {
         board.display();
     }
 
-    public Integer requestPlayersMove(String s) {
+    private Integer requestPlayersMove(String s) {
         Integer move = player.getMove(s);
         return move;
     }
