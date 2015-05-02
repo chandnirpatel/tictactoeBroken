@@ -13,7 +13,7 @@ public class TicTacToe {
 
     public void start() {
         board.display();
-        board.updateBoardValue(requestPlayersMove("Please enter a number between 1 and 9:"));
+        board.updateBoardValue(requestPlayersMove("Please enter a number between 1 and 9:"), "X ");
         board.display();
     }
 

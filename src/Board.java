@@ -25,7 +25,7 @@ public class Board {
                             boardValues.get(7) + "|" + boardValues.get(8) + "|" + boardValues.get(9));
     }
 
-    public void updateBoardValue(int location) {
-        boardValues.add(location, "X ");
+    public void updateBoardValue(int location, String symbol) {
+        boardValues.add(location, symbol);
     }
 }

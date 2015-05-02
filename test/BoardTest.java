@@ -3,9 +3,6 @@ import org.junit.Test;
 
 import java.io.PrintStream;
 
-import static org.junit.Assert.*;
-import static org.mockito.Matchers.anyMap;
-import static org.mockito.Matchers.contains;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 
@@ -28,7 +25,7 @@ public class BoardTest {
 
     @Test
     public void shouldDisplayXInTopLeftWhenUpdateBoardForPosition1() {
-        board.updateBoardValue(1);
+        board.updateBoardValue(1, "X ");
         board.display();
 
         verify(printStream).println("X |  |  \n" +
@@ -40,7 +37,7 @@ public class BoardTest {
 
     @Test
     public void shouldDisplayXInTopMiddleWhenUpdateBoardForPosition2() {
-        board.updateBoardValue(2);
+        board.updateBoardValue(2, "X ");
         board.display();
 
         verify(printStream).println("  |X |  \n" +
@@ -50,5 +47,15 @@ public class BoardTest {
                                     "  |  |  ");
     }
 
+    @Test
+    public void shouldDisplayOInTopLeftWhenPlayer2ChoosesPosition1() {
+        board.updateBoardValue(1, "O ");
+        board.display();
 
+        verify(printStream).println("O |  |  \n" +
+                "--------\n" +
+                "  |  |  \n" +
+                "--------\n" +
+                "  |  |  ");
+    }
 }
