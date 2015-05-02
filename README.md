@@ -1,4 +1,4 @@
-Built TicTacToe based on the following stories. 
+Built TicTacToe based on the following stories.
 
 Stories
 Draw the board
