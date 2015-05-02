@@ -18,23 +18,19 @@ public class TicTacToeTest {
         ticTacToe = new TicTacToe(board, player1, player2);
     }
 
-//    @Test
-//    public void shouldDisplayBoardWhenStart() {
-//        board = mock(Board.class);
-//        TicTacToe ticTacToeWithMockBoard = new TicTacToe(board, player1, player2);
-//        when(player1.getMove(anyString())).thenReturn(1);
-//        when(player2.getMove(anyString())).thenReturn(2);
-//        when(board.isEmptyLocation(1)).thenReturn(true).thenReturn(true);
-//        ticTacToeWithMockBoard.start();
-//
-//        verify(board, atLeast(1)).display();
-//    }
+    @Test
+    public void shouldDisplayBoardWhenStart() {
+        board = mock(Board.class);
+        TicTacToe ticTacToeWithMockBoard = new TicTacToe(board, player1, player2);
+
+        verify(board, atLeast(1)).display();
+    }
 
     @Test
-    public void shouldAskPlayer1ForMove() {
+    public void shouldAskPlayerForMove() {
         when(player1.getMove(anyString())).thenReturn(1);
-        when(player2.getMove(anyString())).thenReturn(2);
-        ticTacToe.start();
+
+        ticTacToe.turn(player1,board);
 
         verify(player1, atLeastOnce()).getMove(anyString());
     }
@@ -45,7 +41,6 @@ public class TicTacToeTest {
         when(player1.getMove(anyString())).thenReturn(1);
         when(player2.getMove(anyString())).thenReturn(2);
 
-
         ticTacToe.start();
 
         verify(player2, atLeastOnce()).getMove(anyString());
@@ -53,12 +48,21 @@ public class TicTacToeTest {
 
     @Test
     public void shouldAskForValidLocationWhenPlayerGivesInvalidInput() {
-        TicTacToe ticTacToeWithRealBoard = new TicTacToe(new Board(System.out), player1, player2);
         when(player1.getMove(anyString())).thenReturn(10).thenReturn(1);
-        when(player2.getMove(anyString())).thenReturn(2);
 
-        ticTacToeWithRealBoard.start();
+        ticTacToe.turn(player1, board);
 
         verify(player1, atLeast(2)).getMove(anyString());
+    }
+
+    @Test
+    public void shouldAskForDifferentLocationWhenPlayerGivesUsedLocation() {
+        int takenLocation = 1;
+        board.updateBoardValue(takenLocation, "X ");
+        when(player1.getMove(anyString())).thenReturn(takenLocation).thenReturn(2);
+
+        ticTacToe.turn(player1, board);
+
+        verify(player1).getMove(contains("Location already taken"));
     }
 }
