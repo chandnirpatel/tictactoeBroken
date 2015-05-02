@@ -19,6 +19,7 @@ public class Board {
     private void clearBoard() {
         for (int location = 0; location < 10; location++) {
             boardValues.add("  ");
+            if (location == 0) boardValues.set(0, "");
         }
     }
 
@@ -37,4 +38,14 @@ public class Board {
     public boolean isEmptyLocation(int move) {
         return boardValues.get(move).equals("  ");
     }
+
+    public boolean isFull() {
+        boolean full = true;
+        for (String boardValue : boardValues) {
+            if (boardValue.equals("  ")) full = false;
+        }
+        return full;
+    }
+
+
 }

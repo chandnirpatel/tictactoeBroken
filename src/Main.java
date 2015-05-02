@@ -10,7 +10,7 @@ public class Main {
         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
         Player player1 = new Player(printStream, bufferedReader, "X ");
         Player player2 = new Player(printStream, bufferedReader, "O ");
-        TicTacToe ticTacToe = new TicTacToe(board, player1, player2);
+        TicTacToe ticTacToe = new TicTacToe(board, player1, player2, System.out);
         ticTacToe.start();
     }
 }

@@ -3,6 +3,7 @@ import org.junit.Test;
 
 import java.io.PrintStream;
 
+import static org.junit.Assert.assertTrue;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 
@@ -57,5 +58,14 @@ public class BoardTest {
                 "  |  |  \n" +
                 "--------\n" +
                 "  |  |  ");
+    }
+
+    @Test
+    public void shouldBeTrueWhenBoardIsFull() {
+        for (int location = 1; location < 10; location++) {
+            board.updateBoardValue(location, "X ");
+        }
+
+        assertTrue(board.isFull());
     }
 }
