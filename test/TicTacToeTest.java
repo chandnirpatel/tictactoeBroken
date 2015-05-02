@@ -10,10 +10,12 @@ import static org.mockito.Mockito.*;
 
 public class TicTacToeTest {
     private Board board;
-    private TicTacToe ticTacToe;
     private Player player1;
     private Player player2;
     private PrintStream printStream;
+    private TicTacToe ticTacToe;
+    private Board mockBoard;
+    private TicTacToe ticTacToeWithMockBoard;
 
     @Before
     public void setUp() throws Exception {
@@ -22,27 +24,26 @@ public class TicTacToeTest {
         player1 = mock(Player.class);
         player2 = mock(Player.class);
         ticTacToe = new TicTacToe(board, player1, player2, printStream);
+
+        mockBoard = mock(Board.class);
+        ticTacToeWithMockBoard = new TicTacToe(mockBoard, player1, player2, printStream);
     }
 
     @Test
     public void shouldDisplayBoardWhenStart() {
-        board = mock(Board.class);
-        TicTacToe ticTacToeWithMockBoard = new TicTacToe(board, player1, player2, printStream);
 
-        verify(board, atLeast(1)).display();
+        verify(mockBoard, atLeast(1)).display();
     }
 
     @Test
     public void shouldDisplayGameIsADrawWhenBoardIsFull() {
-        board = mock(Board.class);
-        when(board.isFull()).thenReturn(true);
-        TicTacToe ticTacToeWithMockBoard = new TicTacToe(board, player1, player2, printStream);
+        when(mockBoard.isFull()).thenReturn(true);
 
         ticTacToeWithMockBoard.start();
 
-        InOrder inOrder = inOrder(board, printStream);
+        InOrder inOrder = inOrder(mockBoard, printStream);
 
-        inOrder.verify(board).isFull();
+        inOrder.verify(mockBoard).isFull();
         inOrder.verify(printStream).println("Game is a draw");
     }
 

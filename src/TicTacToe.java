@@ -26,16 +26,17 @@ public class TicTacToe {
         }
         board.display();
         printStream.println("Game is a draw");
-
     }
 
     public void turn(Player player, Board board) {
+        board.display();
         int move = getValidPlayerMove(player, board);
         board.updateBoardValue(move, player.getSymbol());
     }
 
     private Integer getValidPlayerMove(Player player, Board board){
         int move = player.getMove("Please enter a number between 1 and 9:");
+
         while ( move < 1 || move > 9 || !board.isEmptyLocation(move) ) {
             move = player.getMove("Location already taken, or invalid move.\n " +
                     "Please enter a different location between 1 and 9:");

@@ -15,8 +15,7 @@ public class Player {
 
     public Integer getMove(String prompt) {
         printStream.println(prompt);
-        Integer move = readUserInput();
-        return move;
+        return readUserInput();
     }
 
     public String getSymbol() {

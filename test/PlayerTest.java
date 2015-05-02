@@ -18,7 +18,5 @@ public class PlayerTest {
         player.getMove("");
 
         verify(bufferedReader).readLine();
-
-
     }
 }
