@@ -8,8 +8,8 @@ public class Main {
         PrintStream printStream = new PrintStream(System.out);
         Board board = new Board(printStream);
         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
-        Player player1 = new Player(printStream, bufferedReader, "X ");
-        Player player2 = new Player(printStream, bufferedReader, "O ");
+        Player player1 = new Player(printStream, bufferedReader, "X ", board);
+        Player player2 = new Player(printStream, bufferedReader, "O ", board);
         TicTacToe ticTacToe = new TicTacToe(board, player1, player2, printStream);
 
         ticTacToe.start();

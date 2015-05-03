@@ -6,11 +6,13 @@ public class Player {
     private final PrintStream printStream;
     private final BufferedReader bufferedReader;
     private final String symbol;
+    private Board board;
 
-    public Player(PrintStream printStream, BufferedReader bufferedReader, String symbol) {
+    public Player(PrintStream printStream, BufferedReader bufferedReader, String symbol, Board board) {
         this.printStream = printStream;
         this.bufferedReader = bufferedReader;
         this.symbol = symbol;
+        this.board = board;
     }
 
     public Integer getMove(String prompt) {
@@ -28,7 +30,7 @@ public class Player {
         return move;
     }
 
-    public void turn(Board board) {
+    public void turn() {
         board.display();
         int move = getValidPlayerMove(board);
         board.updateBoardValue(move, symbol);

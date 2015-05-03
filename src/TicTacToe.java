@@ -21,7 +21,7 @@ public class TicTacToe {
             if (turnNumber % 2 == 1) player = player1;
             else {player = player2;}
 
-            player.turn(board);
+            player.turn();
             turnNumber ++;
         }
         board.display();

@@ -19,14 +19,14 @@ public class BoardTest {
     }
 
     @Test
-    public void shouldDisplayBoard() {
+    public void shouldDisplayBoardInCorrectFormat() {
         board.display();
 
         verify(printStream).println("  |  |  \n--------\n  |  |  \n--------\n  |  |  ");
     }
 
     @Test
-    public void shouldDisplayXInTopLeftWhenUpdateBoardForPosition1() {
+    public void shouldDisplayXInTopLeftWhenUpdateBoardForCell1() {
         board.updateBoardValue(1, "X ");
         board.display();
 
@@ -38,7 +38,7 @@ public class BoardTest {
     }
 
     @Test
-    public void shouldDisplayXInTopMiddleWhenUpdateBoardForPosition2() {
+    public void shouldDisplayXInTopMiddleWhenUpdateBoardForCell2() {
         board.updateBoardValue(2, "X ");
         board.display();
 
@@ -50,7 +50,7 @@ public class BoardTest {
     }
 
     @Test
-    public void shouldDisplayOInTopLeftWhenPlayer2ChoosesPosition1() {
+    public void shouldDisplayOInTopLeftWhenPlayer2ChoosesCell1() {
         board.updateBoardValue(1, "O ");
         board.display();
 
@@ -59,6 +59,15 @@ public class BoardTest {
                 "  |  |  \n" +
                 "--------\n" +
                 "  |  |  ");
+    }
+
+    @Test
+    public void shouldBeAbleToConfirmIfACellIsTakenOrEmpty() {
+        board.updateBoardValue(1, "O ");
+
+        assertFalse(board.isEmptyLocation(1));
+        assertTrue(board.isEmptyLocation(2));
+
     }
 
     @Test

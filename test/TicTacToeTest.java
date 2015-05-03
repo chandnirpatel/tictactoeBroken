@@ -1,6 +1,5 @@
 import org.junit.Before;
 import org.junit.Test;
-import org.mockito.InOrder;
 
 import java.io.PrintStream;
 
@@ -29,6 +28,20 @@ public class TicTacToeTest {
         ticTacToe.start();
 
         verify(board, atLeast(1)).display();
+    }
+
+    @Test
+    public void shouldHavePlayerOneTakeATurnWhenPlayingGame() {
+
+        ticTacToe.start();
+
+        verify(player1, atLeastOnce()).turn();
+    }
+
+    @Test
+    public void shouldHavePlayerTwoTakeATurnWhenPlayingGame() {
+        ticTacToe.start();
+        verify(player2, atLeastOnce()).turn();
     }
 
     @Test
