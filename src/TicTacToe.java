@@ -37,8 +37,8 @@ public class TicTacToe {
     private Integer getValidPlayerMove(Player player, Board board){
         int move = player.getMove("Please enter a number between 1 and 9:");
 
-        while ( move < 1 || move > 9 || !board.isEmptyLocation(move) ) {
-            move = player.getMove("Location already taken, or invalid move.\n " +
+        while ( !board.isEmptyLocation(move) ) {
+            move = player.getMove("Location already taken\n " +
                     "Please enter a different location between 1 and 9:");
         }
         return move;

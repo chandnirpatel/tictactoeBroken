@@ -6,6 +6,7 @@ import java.io.PrintStream;
 
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
 
 
 public class PlayerTest {
@@ -14,6 +15,7 @@ public class PlayerTest {
         PrintStream printStream = new PrintStream(System.out);
         BufferedReader bufferedReader = mock(BufferedReader.class);
         Player player = new Player(printStream, bufferedReader, "X ");
+        when(bufferedReader.readLine()).thenReturn("1");
 
         player.getMove("");
 

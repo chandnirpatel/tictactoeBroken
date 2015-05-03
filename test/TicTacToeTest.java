@@ -83,14 +83,6 @@ public class TicTacToeTest {
         assertTrue(board.isFull());
     }
 
-    @Test
-    public void shouldAskForValidLocationWhenPlayerGivesInvalidInput() {
-        when(player1.getMove(anyString())).thenReturn(10).thenReturn(1);
-
-        ticTacToe.turn(player1, board);
-
-        verify(player1, atLeast(2)).getMove(anyString());
-    }
 
     @Test
     public void shouldAskForDifferentLocationWhenPlayerGivesUsedLocation() {

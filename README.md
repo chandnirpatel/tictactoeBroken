@@ -10,10 +10,13 @@ When the game starts, draw a board that looks like this:
    |   |
 Make a move
 Prompt player 1 to enter a number between 1 and 9 to indicate where they wish to move. Redraw the board with an ‘X’ in that location. It doesn’t matter what happens if they enter anything besides a number from 1 to 9.
+
 Player 2 move
 Prompt player 2 to enter a number between 1 and 9 to indicate where they wish to move. Redraw the board with an ‘O’ in that location (and still draw player 1’s ‘X’). It doesn’t matter what you do if they enter the same location that player 1 did.
+
 Location already taken
 If either player moves into a cell that is already used, display the message, “Location already taken” and prompt them to try again (repeat this until they make a valid move).
+
 Repeat until the board is filled
 Alternate player turns until the board is filled. Draw the board once it is full and display the message, “Game is a draw”.
 Winner!

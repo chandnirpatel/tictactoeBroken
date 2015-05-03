@@ -28,8 +28,6 @@ public class Player {
             move = Integer.parseInt(bufferedReader.readLine());
         } catch (IOException e) {
             e.printStackTrace();
-        } catch (NumberFormatException nfe){
-            move = -1;
         }
         return move;
     }
