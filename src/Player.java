@@ -18,10 +18,6 @@ public class Player {
         return readUserInput();
     }
 
-    public String getSymbol() {
-        return symbol;
-    }
-
     private Integer readUserInput() {
         Integer move = -1;
         try {
@@ -32,4 +28,19 @@ public class Player {
         return move;
     }
 
+    public void turn(Board board) {
+        board.display();
+        int move = getValidPlayerMove(board);
+        board.updateBoardValue(move, symbol);
+    }
+
+    private Integer getValidPlayerMove(Board board){
+        int move = getMove("Please enter a number between 1 and 9:");
+
+        while (!board.isEmptyLocation(move)) {
+            move = getMove("Location already taken\n " +
+                    "Please enter a different location between 1 and 9:");
+        }
+        return move;
+    }
 }

@@ -21,4 +21,5 @@ public class PlayerTest {
 
         verify(bufferedReader).readLine();
     }
+
 }
